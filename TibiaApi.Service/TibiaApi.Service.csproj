@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Tibia.Comum\TibiaApi.Comum.csproj" />
+    <ProjectReference Include="..\TibiaApi.Repository\TibiaApi.Repository.csproj" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="Hangfire.Core" Version="1.6.22" />
+  </ItemGroup>
+
+</Project>

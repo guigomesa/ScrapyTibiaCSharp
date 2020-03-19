@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DotnetSpider.Core" Version="3.0.8" />
+    <PackageReference Include="DotnetSpider.Extension" Version="3.0.8" />
+    <PackageReference Include="Hangfire.Core" Version="1.6.22" />
+    <PackageReference Include="ScrapySharp" Version="3.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Tibia.Comum\TibiaApi.Comum.csproj" />
+    <ProjectReference Include="..\TibiaApi.Service\TibiaApi.Service.csproj" />
+  </ItemGroup>
+
+</Project>

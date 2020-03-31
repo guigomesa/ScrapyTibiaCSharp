@@ -23,7 +23,7 @@
     <PackageReference Include="Hangfire" Version="1.6.22" />
     <PackageReference Include="Hangfire.Core" Version="1.6.22" />
     <PackageReference Include="Hangfire.MySqlStorage8" Version="1.5.0" />
-    <PackageReference Include="Hangfire.PostgreSql" Version="1.5.0" />
+    <PackageReference Include="Hangfire.PostgreSql" Version="1.6.4.1" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.2.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.2" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="2.2.0" />

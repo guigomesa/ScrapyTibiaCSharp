@@ -8,6 +8,7 @@ namespace Tibia.Test
         [TestMethod]
         public void TestMethod1()
         {
+            Assert.IsTrue(true);
         }
     }
 }

@@ -1,13 +1,7 @@
-
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Debug;
-using MySql.Data.EntityFrameworkCore.Extensions;
 using System;
-using System.Configuration;
-using Npgsql.EntityFrameworkCore;
 
 namespace TibiaApi.Database
 {

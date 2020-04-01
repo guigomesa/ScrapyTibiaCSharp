@@ -5,6 +5,6 @@
   <ItemGroup>
     <PackageReference Include="DotnetSpider.Extension" Version="3.0.8" />
     <PackageReference Include="DotnetSpider.Extraction" Version="3.0.8" />
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.2.2" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.2.8" />
   </ItemGroup>
 </Project>

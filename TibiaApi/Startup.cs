@@ -4,11 +4,11 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Swashbuckle.AspNetCore.Swagger;
 using System;
-using TibiaApi.Comum;
-using TibiaApi.Web.Auth;
 using TibiaApi.Web.Config;
 using TibiaApi.Web.HangfireJobs;
+
 
 namespace TibiaApi.Web
 {
@@ -32,11 +32,22 @@ namespace TibiaApi.Web
 
             services.AddMvc();
 
-            services.AddAutoMapper();
+            services.AddAutoMapper(config =>
+            {
+                config.AddProfile(new MapperConfig());
+
+
+            }, typeof(Startup));
+
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info { Title = "TibiaApi", Version = "v1" });
+                c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo()
+                {
+                    Description = "Api for Tibia",
+                    Title = "Api Tibia",
+                    Version = "v1"
+                });
             });
         }
 
@@ -52,7 +63,7 @@ namespace TibiaApi.Web
 
             var apenasScrapy = Configuration.GetValue<bool>("apenasscrapy", false);
 
-            
+
 
             app.StartHangfire(apenasScrapy, serviceProvider);
 

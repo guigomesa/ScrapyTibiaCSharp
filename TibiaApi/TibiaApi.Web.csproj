@@ -20,7 +20,7 @@
   </PropertyGroup> -->
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
-    <PackageReference Include="Hangfire" Version="1.6.22" />
+    <PackageReference Include="Hangfire" Version="1.7.9" />
     <PackageReference Include="Hangfire.Core" Version="1.6.22" />
     <PackageReference Include="Hangfire.MySqlStorage8" Version="1.5.0" />
     <PackageReference Include="Hangfire.PostgreSql" Version="1.5.0" />

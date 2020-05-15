@@ -6,7 +6,7 @@ namespace TibiaApi.Web.HangfireJobs
     {
         public static void StartRecorrentes()
         {
-            Hangfire.RecurringJob.AddOrUpdate<WorldListSpider>(spider => spider.Run(), Hangfire.Cron.HourInterval(18));
+            Hangfire.RecurringJob.AddOrUpdate<WorldListSpider>(spider => spider.Run(), Hangfire.Cron.Daily(18,0));
         }
     }
 }

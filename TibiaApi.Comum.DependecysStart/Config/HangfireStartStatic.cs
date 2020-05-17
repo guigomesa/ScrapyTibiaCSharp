@@ -10,10 +10,15 @@ namespace TibiaApi.Web.Config
 {
     public static class HangfireStartStatic
     {
-        public static void StartHangfire(this IApplicationBuilder app, bool apenasServer, IServiceProvider serviceProvider)
+        public static void StartHangfire(this IApplicationBuilder app, bool apenasDashboard, IServiceProvider serviceProvider)
         {
-            var filas = apenasServer
-                 ? new string[0]
+            var workersCount = 10;
+
+            if (apenasDashboard)
+                workersCount = 1;
+
+            var filas = apenasDashboard
+                 ? new[] { Constantes.FilasHangfire.DEFAULT }
                  : new[] {
                     Constantes.FilasHangfire.WORLD_SERVICE,
                     Constantes.FilasHangfire.PLAYER_SERVICE,
@@ -22,12 +27,21 @@ namespace TibiaApi.Web.Config
                     Constantes.FilasHangfire.PLAYER_SCRAPY,
                  };
 
-            var nome = apenasServer ? "TIBIA_SERVER_API_" : "TIBIA_FULL_";
-            //var workersCount = apenasScrapy ? 10 : 8;
-            var workersCount = 10;
+            var nome = apenasDashboard ? "TIBIA_DASHBOARD_API_" : "TIBIA_FULL_";
+            
             BackgroundJobServerOptions options = CreateOptionsBackgroundServer(serviceProvider, filas, nome, workersCount);
 
             app.UseHangfireServer(options);
+        }
+
+        public static void StartDashboardHangfire(this IApplicationBuilder app, string connectionString)
+        {
+            var optionsDashboard = new DashboardOptions()
+            {
+                Authorization = new[] { new Auth.HangfireAutorizationFilter() },
+            };
+
+            app.UseHangfireDashboard("/hangfire", optionsDashboard, GenerateJobStorage(connectionString));
         }
 
         private static BackgroundJobServerOptions CreateOptionsBackgroundServer(IServiceProvider serviceProvider, string[] filas, string nome, int workersCount)
@@ -37,7 +51,8 @@ namespace TibiaApi.Web.Config
                 Activator = new HangfireActivator(serviceProvider),
                 Queues = filas,
                 WorkerCount = workersCount,
-                ServerName = $"{nome}{Environment.MachineName}_{Guid.NewGuid().ToString().Replace("-", "").Substring(0, 6)}"
+                ServerName = $"{nome}{Environment.MachineName}_{Guid.NewGuid().ToString().Replace("-", "").Substring(0, 6)}",
+                
             };
         }
 

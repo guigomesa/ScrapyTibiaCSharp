@@ -21,9 +21,20 @@ namespace WorkerTibia
         {
             while (!stoppingToken.IsCancellationRequested)
             {
-                _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
-                await Task.Delay(1000, stoppingToken);
             }
+        }
+
+        public override Task StopAsync(CancellationToken cancellationToken)
+        {
+            Program.HangfireServer.SendStop();
+            Program.HangfireServer.WaitForShutdown(new TimeSpan(0,0,50));
+
+            return base.StopAsync(cancellationToken);
+        }
+
+        public override Task StartAsync(CancellationToken cancellationToken)
+        {
+            return base.StartAsync(cancellationToken);
         }
     }
 }

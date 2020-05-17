@@ -30,7 +30,11 @@ namespace TibiaApi.Web
 
             services.StartServiceHangfire(connection);
             
-            services.AddMvc();
+            services.AddMvc(options => {
+
+                options.EnableEndpointRouting = false;
+                
+            });
 
             services.AddAutoMapper(config =>
             {
@@ -61,11 +65,15 @@ namespace TibiaApi.Web
             GlobalConfiguration.Configuration.UseActivator(new HangfireActivator(serviceProvider));
 
 
-            var apenasScrapy = Configuration.GetValue<bool>("apenasscrapy", false);
+            var apenasServer = Configuration.GetValue<bool>("apenasscrapy", true);
 
 
 
-            app.StartHangfire(apenasScrapy, serviceProvider);
+            app.StartHangfire(apenasServer, serviceProvider);
+
+            var cs = Configuration.GetConnectionString("TibiaPostgres");
+
+            app.StartDashboardHangfire(cs);
 
             app.UseSwagger();
             app.UseSwaggerUI(c =>
@@ -73,6 +81,8 @@ namespace TibiaApi.Web
                 c.RoutePrefix = "swagger";
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Tibia Api");
             });
+
+
             app.UseMvc();
 
             ObjectFactoryTibia.Init(serviceProvider);

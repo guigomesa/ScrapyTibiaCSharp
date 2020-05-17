@@ -13,6 +13,7 @@ namespace WorkerTibia
             CreateHostBuilder(args).Build().Run();
         }
 
+        public static Hangfire.BackgroundJobServer HangfireServer { get; set; }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
@@ -27,7 +28,7 @@ namespace WorkerTibia
 
                    var serviceProvider = configuration.Get<IServiceProvider>();
 
-                    var bgServer = HangfireStartStatic.CreateBackgroundJobServer(serviceProvider, connection);
+                    HangfireServer =  HangfireStartStatic.CreateBackgroundJobServer(serviceProvider, connection);
 
                     services.AddHostedService<Worker>();
                 });

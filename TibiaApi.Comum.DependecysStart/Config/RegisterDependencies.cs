@@ -1,12 +1,9 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NetCore.AutoRegisterDi;
 using System.Reflection;
 using TibiaApi.Database;
-using TibiaApi.Repository;
-using TibiaApi.Service;
 
 namespace TibiaApi.Web.Config
 {
@@ -19,10 +16,6 @@ namespace TibiaApi.Web.Config
             services.AddLogging();
 
             services.AddDbContextPool<TibiaDbContext>(options => options.UseNpgsql(connection),poolSize: 3);
-
-           // services.AddDbContextPool<TibiaDbContext>(options =>
-           // options
-           //.UseNpgsql(connection));
         }
 
         

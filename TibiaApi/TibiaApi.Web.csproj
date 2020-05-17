@@ -41,6 +41,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Tibia.Comum\TibiaApi.Comum.csproj" />
     <ProjectReference Include="..\TibiaApi.BotWeb\TibiaApi.BotWeb.csproj" />
+    <ProjectReference Include="..\TibiaApi.Comum.DependecysStart\TibiaApi.Comum.DependecysStart.csproj" />
     <ProjectReference Include="..\TibiaApi.Service\TibiaApi.Service.csproj" />
   </ItemGroup>
 </Project>

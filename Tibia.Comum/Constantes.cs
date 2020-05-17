@@ -7,7 +7,7 @@ namespace TibiaApi.Comum
     public static class Constantes
     {
 
-        public static class FilasConstantes
+        public static class FilasHangfire
         {
             public const string DEFAULT = "default";
             public const string PLAYER_SCRAPY = "player_scrapy";

@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>dotnet-WorkerTibia-A4F24A78-E7E3-42A5-B2E7-6A56BF545816</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Hangfire.Core" Version="1.7.11" />
+    <PackageReference Include="Hangfire.PostgreSql" Version="1.6.4.2" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.3" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TibiaApi.Comum.DependecysStart\TibiaApi.Comum.DependecysStart.csproj" />
+  </ItemGroup>
+</Project>

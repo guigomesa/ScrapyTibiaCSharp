@@ -14,7 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace TibiaApi.Service
 {
-    [Queue(FilasConstantes.PLAYER_SERVICE)]
+    [Queue(FilasHangfire.PLAYER_SERVICE)]
     public class PlayerService<IPlayerRepository> : BasicService<IPlayerRepository<Player>, Player>, IPlayerService<IPlayerRepository>
     {
         private readonly IMapper _mapper;
@@ -29,7 +29,7 @@ namespace TibiaApi.Service
             _worldRepository = worldRepository;
         }
 
-        [Queue(FilasConstantes.PLAYER_SERVICE)]
+        [Queue(FilasHangfire.PLAYER_SERVICE)]
         public ModelBaseReturn SaveFromScrapy<TScrapy>(IList<TScrapy> models)
         {
             ModelBaseReturn retornoErro = null;
@@ -44,7 +44,7 @@ namespace TibiaApi.Service
             return retornoErro ?? CreateReturnCreated();
         }
 
-        [Queue(FilasConstantes.PLAYER_SERVICE)]
+        [Queue(FilasHangfire.PLAYER_SERVICE)]
         public override ModelBaseReturn SaveFromScrapy<TScrapy>(TScrapy scrapyModel)
         {
             var model = scrapyModel as PlayerScrapy;

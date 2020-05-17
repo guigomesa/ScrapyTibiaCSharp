@@ -29,7 +29,7 @@ namespace TibiaApi.BotWeb
             UrlWorld = urlWorld;
         }
 
-        [Queue(FilasConstantes.WORLD_SCRAPY)]
+        [Queue(FilasHangfire.WORLD_SCRAPY)]
         public void Run(string url)
         {
             AddRequest(new Request(url));

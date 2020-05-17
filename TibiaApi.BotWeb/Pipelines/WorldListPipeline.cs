@@ -21,7 +21,7 @@ namespace TibiaApi.BotWeb.Pipelines
 
             foreach (var url in urls)
             {
-                Hangfire.RecurringJob.AddOrUpdate<WorldSpider>(url.Name, spider=> spider.Run(url.Url), Hangfire.Cron.Hourly(0), queue: Constantes.FilasConstantes.WORLD_SCRAPY);
+                Hangfire.RecurringJob.AddOrUpdate<WorldSpider>(url.Name, spider=> spider.Run(url.Url), Hangfire.Cron.Hourly(0), queue: Constantes.FilasHangfire.WORLD_SCRAPY);
             }
 
             return items.Count;

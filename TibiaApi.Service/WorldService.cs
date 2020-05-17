@@ -10,7 +10,7 @@ using static TibiaApi.Comum.Constantes;
 
 namespace TibiaApi.Service
 {
-    [Queue(FilasConstantes.WORLD_SERVICE)]
+    [Queue(FilasHangfire.WORLD_SERVICE)]
     public class WorldService<IWorldRepository> : BasicService<IWorldRepository<World>, World>, IWorldService<IWorldRepository>
 
     {
@@ -18,7 +18,7 @@ namespace TibiaApi.Service
         {
         }
 
-        [Queue(FilasConstantes.WORLD_SERVICE)]
+        [Queue(FilasHangfire.WORLD_SERVICE)]
         public override ModelBaseReturn SaveFromScrapy<TScrapy>(TScrapy scrapyModel)
         {
             var scrapy = scrapyModel as WorldScrapy;

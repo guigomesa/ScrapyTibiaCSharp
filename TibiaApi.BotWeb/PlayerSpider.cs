@@ -28,7 +28,7 @@ namespace TibiaApi.BotWeb
             UrlsPlayers = urlsPlayers;
         }
 
-        [Queue(FilasConstantes.PLAYER_SCRAPY)]
+        [Queue(FilasHangfire.PLAYER_SCRAPY)]
         public void Run(IList<string> urlPlayers)
         {
             AddRequests(urlPlayers.Select(v => new Request(v)).ToList());

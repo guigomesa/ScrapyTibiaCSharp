@@ -19,9 +19,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TibiaApi.BotWeb", "TibiaApi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repositories", "Repositories", "{62EF5005-BC3B-4741-A0ED-E438D074EFC4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TibiaApi.MongoDBRepository", "TibiaApi.MongoDB\TibiaApi.MongoDBRepository.csproj", "{9224837C-09C1-4A3E-9445-296EE31155F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TibiaApi.MongoDBRepository", "TibiaApi.MongoDB\TibiaApi.MongoDBRepository.csproj", "{9224837C-09C1-4A3E-9445-296EE31155F1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ServicesSearch", "ServicesSearch", "{2514DE8C-FE14-463D-9A3B-CDCAFB66B668}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkerTibia", "WorkerTibia\WorkerTibia.csproj", "{2571CA37-9822-4524-8F38-8C8ADECD0369}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TibiaApi.Comum.DependecysStart", "TibiaApi.Comum.DependecysStart\TibiaApi.Comum.DependecysStart.csproj", "{722891D5-5C2B-49FF-9A81-7E0ACB23C7A4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +65,14 @@ Global
 		{9224837C-09C1-4A3E-9445-296EE31155F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9224837C-09C1-4A3E-9445-296EE31155F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9224837C-09C1-4A3E-9445-296EE31155F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2571CA37-9822-4524-8F38-8C8ADECD0369}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2571CA37-9822-4524-8F38-8C8ADECD0369}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2571CA37-9822-4524-8F38-8C8ADECD0369}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2571CA37-9822-4524-8F38-8C8ADECD0369}.Release|Any CPU.Build.0 = Release|Any CPU
+		{722891D5-5C2B-49FF-9A81-7E0ACB23C7A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{722891D5-5C2B-49FF-9A81-7E0ACB23C7A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{722891D5-5C2B-49FF-9A81-7E0ACB23C7A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{722891D5-5C2B-49FF-9A81-7E0ACB23C7A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

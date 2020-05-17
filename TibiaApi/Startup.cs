@@ -29,7 +29,7 @@ namespace TibiaApi.Web
             var connection = Configuration.GetConnectionString("TibiaPostgres");
 
             services.StartServiceHangfire(connection);
-
+            
             services.AddMvc();
 
             services.AddAutoMapper(config =>

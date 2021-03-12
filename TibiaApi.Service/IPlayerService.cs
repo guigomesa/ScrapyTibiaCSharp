@@ -11,5 +11,6 @@ namespace TibiaApi.Service
     public interface IPlayerService<PlayerRepository> : IBasicService<IPlayerRepository<Player>,Player>     
     {
         ModelBaseReturn SaveFromScrapy<TScrapy>(IList<TScrapy> models);
+        ModelBaseReturn SaveFromScrapy(PlayerScrapy scrapyModel, Player playerDb);
     }
 }

@@ -33,13 +33,24 @@ namespace TibiaApi.Service
         public ModelBaseReturn SaveFromScrapy<TScrapy>(IList<TScrapy> models)
         {
             ModelBaseReturn retornoErro = null;
+
             if (models != null && models.Any())
+            {
+                var playerNames = models.Where(v => v is PlayerScrapy).Select(p => (p as PlayerScrapy).Name).ToArray();
+
+                var playersInDb = _repository.FindAllByNames(playerNames);
+
                 foreach (var item in models)
                 {
-                    var r = this.SaveFromScrapy(item);
-                    if (r.Status == System.Net.HttpStatusCode.InternalServerError)
-                        retornoErro = r;
+                    var playerDb = playersInDb.FirstOrDefault(p => p.Name == (item as PlayerScrapy).Name);
+                    this.SaveFromScrapy(item as PlayerScrapy, playerDb);
                 }
+                _repository.Save();
+            }
+
+
+
+          
 
             return retornoErro ?? CreateReturnCreated();
         }
@@ -47,15 +58,23 @@ namespace TibiaApi.Service
         [Queue(FilasHangfire.PLAYER_SERVICE)]
         public override ModelBaseReturn SaveFromScrapy<TScrapy>(TScrapy scrapyModel)
         {
-            var model = scrapyModel as PlayerScrapy;
-            var isCreated = true;
+            var playerInDb = _repository.FindByName((scrapyModel as PlayerScrapy).Name);
+            var retorno =  SaveFromScrapy(scrapyModel as PlayerScrapy, playerInDb);
+            _repository.Save();
 
+            return retorno;
+        }
+
+        [Queue(FilasHangfire.PLAYER_SERVICE)]
+        public ModelBaseReturn SaveFromScrapy(PlayerScrapy model, Player player)
+        {
             try
             {
-                var player = _repository.FindByName(model.Name);
+                bool isCreated = true;
+
                 isCreated = player == null;
 
-                var world = _worldRepository.FindByName(model.WorldName);
+                var world = player?.World ?? _worldRepository.FindByName(model.WorldName);
 
                 if (player == null)
                 {
@@ -78,8 +97,6 @@ namespace TibiaApi.Service
 
 
                 _repository.AddOrUpdate(player);
-                _repository.Save();
-
 
                 if (isCreated)
                 {

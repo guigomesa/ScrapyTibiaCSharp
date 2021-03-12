@@ -62,11 +62,10 @@ namespace TibiaApi.Web
                 app.UseDeveloperExceptionPage();
             }
 
-            GlobalConfiguration.Configuration.UseActivator(new HangfireActivator(serviceProvider));
+            //GlobalConfiguration.Configuration.UseActivator(new HangfireActivator(serviceProvider));
 
 
             var apenasServer = Configuration.GetValue<bool>("apenasscrapy", true);
-
 
 
             app.StartHangfire(apenasServer, serviceProvider);

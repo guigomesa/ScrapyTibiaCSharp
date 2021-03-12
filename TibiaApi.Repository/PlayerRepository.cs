@@ -11,8 +11,10 @@ namespace TibiaApi.Repository
         public PlayerRepository(TibiaDbContext context) : base(context)
         {
         }
-        public Player FindByName(string name) => this.FindAll()
-            .Where(p => p.Name.Equals(name))
-            .FirstOrDefault();
+
+        public IEnumerable<Player> FindAllByNames(params string[] names) =>
+            this.FindAll().Where(p => names.Contains(p.Name));
+
+        public Player FindByName(string name) => this.FindAllByNames(name).FirstOrDefault();
     }
 }

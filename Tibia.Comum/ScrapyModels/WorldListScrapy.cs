@@ -12,7 +12,19 @@ namespace TibiaApi.Comum.ScrapyModels
         public string Name { get; set; }
 
         [Field(Expression = "td[2]/text()", Type = DotnetSpider.Extraction.SelectorType.XPath)]
-        public int NumberPlayersOnline { get; set; }
+        public string NumberPlayersOnlineStr { get; set; }
+
+        public int NumberPlayersOnline
+        {
+            get
+            {
+                return int.Parse(NumberPlayersOnlineStr.Replace(",", ""));
+            }
+            set
+            {
+                NumberPlayersOnlineStr = value.ToString();
+            }
+        }
 
         [Field(Expression = "td/a/@href", Type = DotnetSpider.Extraction.SelectorType.XPath)]
         public string Url { get; set; }

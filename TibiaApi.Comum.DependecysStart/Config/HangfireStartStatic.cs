@@ -12,14 +12,15 @@ namespace TibiaApi.Web.Config
     {
         public static void StartHangfire(this IApplicationBuilder app, bool apenasDashboard, IServiceProvider serviceProvider)
         {
-            var workersCount = 10;
+            var workersCount = Environment.ProcessorCount * 10;
 
-            if (apenasDashboard)
-                workersCount = 1;
+            //if (apenasDashboard)
+            //    workersCount = 1;
 
-            var filas = apenasDashboard
-                 ? new[] { Constantes.FilasHangfire.DEFAULT }
-                 : new[] {
+            //var filas = apenasDashboard
+            //     ? new[] { Constantes.FilasHangfire.DEFAULT }
+            //     :
+            var filas = new[] {
                     Constantes.FilasHangfire.WORLD_SERVICE,
                     Constantes.FilasHangfire.PLAYER_SERVICE,
                     Constantes.FilasHangfire.DEFAULT,
@@ -28,7 +29,7 @@ namespace TibiaApi.Web.Config
                  };
 
             var nome = apenasDashboard ? "TIBIA_DASHBOARD_API_" : "TIBIA_FULL_";
-            
+
             BackgroundJobServerOptions options = CreateOptionsBackgroundServer(serviceProvider, filas, nome, workersCount);
 
             app.UseHangfireServer(options);
@@ -48,11 +49,11 @@ namespace TibiaApi.Web.Config
         {
             return new BackgroundJobServerOptions()
             {
-                Activator = new HangfireActivator(serviceProvider),
+                //Activator = new HangfireActivator(serviceProvider),
                 Queues = filas,
                 WorkerCount = workersCount,
                 ServerName = $"{nome}{Environment.MachineName}_{Guid.NewGuid().ToString().Replace("-", "").Substring(0, 6)}",
-                
+
             };
         }
 
@@ -69,11 +70,12 @@ namespace TibiaApi.Web.Config
         public static BackgroundJobServer CreateBackgroundJobServer(IServiceProvider serviceProvider, string connectionString)
         {
             var filas = new[] {
+                    Constantes.FilasHangfire.WORLD_SCRAPY,
+                    Constantes.FilasHangfire.PLAYER_SCRAPY,
                     Constantes.FilasHangfire.WORLD_SERVICE,
                     Constantes.FilasHangfire.PLAYER_SERVICE,
                     Constantes.FilasHangfire.DEFAULT,
-                    Constantes.FilasHangfire.WORLD_SCRAPY,
-                    Constantes.FilasHangfire.PLAYER_SCRAPY,
+
                  };
 
             var options = CreateOptionsBackgroundServer(serviceProvider, filas, "MAQUINA_JOB_", 10);

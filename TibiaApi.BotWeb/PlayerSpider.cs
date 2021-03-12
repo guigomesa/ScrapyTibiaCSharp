@@ -45,6 +45,7 @@ namespace TibiaApi.BotWeb
 
             AddEntityType<PlayerScrapy>();
             AddPipeline(new PlayerPipeline());
+
             this.EncodingName = "UTF-8";
             base.OnInit(arguments);
         }

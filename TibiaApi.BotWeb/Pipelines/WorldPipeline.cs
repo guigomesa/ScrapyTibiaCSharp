@@ -20,14 +20,9 @@ namespace TibiaApi.BotWeb.Pipelines
         {
             foreach (WorldScrapy item in items)
             {
-                Hangfire.BackgroundJob.Enqueue<WorldService<WorldRepository>>(srv => srv.SaveFromScrapy(item));
+                var idJobWorld = Hangfire.BackgroundJob.Enqueue<WorldService<WorldRepository>>(srv => srv.SaveFromScrapy(item));
                 if (item.PlayersUrl.Any())
-                {
-                    foreach (var urls in item.PlayersUrl.Chunk(25).ToList())
-                    {
-                        Hangfire.BackgroundJob.Enqueue<PlayerSpider>(spider => spider.Run(urls.ToList()));
-                    }
-                }
+                    Hangfire.BackgroundJob.Enqueue<PlayerSpider>(spider => spider.Run(item.PlayersUrl));
             }
 
             return items.Count;

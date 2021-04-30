@@ -19,7 +19,7 @@
     <DocumentationFile>C:\Repositorios\ScrapyTibia\TibiaApi\TibiaApi.Web.xml</DocumentationFile>
   </PropertyGroup> -->
   <ItemGroup>
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
     <PackageReference Include="Hangfire" Version="1.7.11" />
     <PackageReference Include="Hangfire.Core" Version="1.7.11" />
     <PackageReference Include="Hangfire.PostgreSql" Version="1.6.4.2" />

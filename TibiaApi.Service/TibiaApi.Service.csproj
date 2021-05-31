@@ -8,7 +8,7 @@
     <ProjectReference Include="..\Tibia.Comum\TibiaApi.Comum.csproj" />
     <ProjectReference Include="..\TibiaApi.Repository\TibiaApi.Repository.csproj" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
-    <PackageReference Include="Hangfire.Core" Version="1.7.11" />
+    <PackageReference Include="Hangfire.Core" Version="1.7.23" />
   </ItemGroup>
 
 </Project>

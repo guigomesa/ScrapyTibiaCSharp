@@ -8,53 +8,8 @@ using TibiaApi.Repository;
 
 namespace TibiaApi.Service
 {
-    public abstract class BasicService<T, K> : IBasicService<T, K>
-        where T : IBaseRepository<K>
-        where K : BasicEntity
+    public abstract class BasicService: IBasicService
     {
-        protected T _repository { get; set; }
-
-        protected BasicService(T repository)
-        {
-            _repository = repository;
-        }
-
-        public void Save()
-        {
-            _repository.Save();
-        }
-
-        public abstract ModelBaseReturn SaveFromScrapy<Object>(Object obj);
-
-        public void Add(K entity)
-        {
-            _repository.Add(entity);
-        }
-
-        public K AddOrUpdate(K entity)
-        {
-            _repository.AddOrUpdate(entity);
-            return entity;
-        }
-
-        public K SaveOrUpdate(K entity)
-        {
-            _repository.AddOrUpdate(entity);
-            _repository.Save();
-            
-            return entity;
-        }
-
-        public IQueryable<K> FindAll()
-        {
-            return _repository.FindAll();
-        }
-
-        public IQueryable<K> FindAll(Predicate<K> predicate)
-        {
-            return _repository.FindAll(predicate);
-        }
-
         protected ModelReturn<TEntidade> CreateReturn<TEntidade>(TEntidade model, HttpStatusCode status, string message = null)
         {
             return new ModelReturn<TEntidade>(model, status, message);
@@ -93,6 +48,21 @@ namespace TibiaApi.Service
         protected ModelReturn<TEntidade> CreateReturnErrorInternal<TEntidade>(TEntidade errorModel, string message)
         {
             return CreateReturn(errorModel, HttpStatusCode.InternalServerError, message);
+        }
+
+        public ModelBaseReturn SaveFromScrapy<KItemScrapy>(KItemScrapy model)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Add<KItem>(KItem entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public KItem SaveOrUpdate<KItem>(KItem entity)
+        {
+            throw new NotImplementedException();
         }
     }
 }

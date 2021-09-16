@@ -4,10 +4,9 @@ using TibiaApi.Repository;
 
 namespace TibiaApi.Service
 {
-    public interface IWorldService<WorldRepository> : IBasicService<IWorldRepository<World>, World>
+    public interface IWorldService : IBasicService
     {
         World FindByName(string name);
         ModelBaseReturn GetAllWorldsNames();
-        //ModelBaseReturn GetAllWorldsNames();
     }
 }

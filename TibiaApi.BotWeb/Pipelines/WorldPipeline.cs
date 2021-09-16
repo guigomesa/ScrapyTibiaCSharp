@@ -3,9 +3,7 @@ using DotnetSpider.Extraction.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TibiaApi.Comum.Extensions;
 using TibiaApi.Comum.ScrapyModels;
-using TibiaApi.Repository;
 using TibiaApi.Service;
 
 namespace TibiaApi.BotWeb.Pipelines
@@ -20,7 +18,7 @@ namespace TibiaApi.BotWeb.Pipelines
         {
             foreach (WorldScrapy item in items)
             {
-                var idJobWorld = Hangfire.BackgroundJob.Enqueue<WorldService<WorldRepository>>(srv => srv.SaveFromScrapy(item));
+                var idJobWorld = Hangfire.BackgroundJob.Enqueue<WorldService>(srv => srv.SaveFromScrapy(item));
                 if (item.PlayersUrl.Any())
                     Hangfire.BackgroundJob.Enqueue<PlayerSpider>(spider => spider.Run(item.PlayersUrl));
             }

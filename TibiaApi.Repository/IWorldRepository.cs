@@ -3,7 +3,7 @@ using TibiaApi.Database.Sql;
 
 namespace TibiaApi.Repository
 {
-    public interface IWorldRepository<T> : IBaseRepository<T> where T : World
+    public interface IWorldRepository : IBaseRepository<World>
     {
         World FindByName(string name);
         IList<string> GetAllWorldsNames();

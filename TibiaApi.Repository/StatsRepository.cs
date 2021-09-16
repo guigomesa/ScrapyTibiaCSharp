@@ -4,7 +4,7 @@ using TibiaApi.Database.Sql;
 
 namespace TibiaApi.Repository
 {
-    public class StatsRepository : BaseRepository<Stats>, IStatsRepository<Stats>
+    public class StatsRepository : BaseRepository<Stats>, IStatsRepository
     {
         protected StatsRepository(TibiaDbContext context) : base(context)
         {

@@ -12,10 +12,10 @@ namespace TibiaApi.Web.Controllers
     [Route("api/v1/[controller]")]
     public class WorldController : BaseController
     {
-        private readonly IWorldService<WorldRepository> _worldService;
+        private readonly IWorldService _worldService;
         private readonly IMapper _mapper;
 
-        public WorldController(IWorldService<WorldRepository> worldService, IMapper mapper)
+        public WorldController(IWorldService worldService, IMapper mapper)
         {
             _worldService = worldService;
             _mapper = mapper;

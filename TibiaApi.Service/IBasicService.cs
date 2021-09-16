@@ -7,12 +7,10 @@ using TibiaApi.Repository;
 
 namespace TibiaApi.Service
 {
-    public interface IBasicService<T, K> where T : IBaseRepository<K> where K : BasicEntity
+    public interface IBasicService
     {
-        void Add(K entity);
-        K SaveOrUpdate(K entity);
-        IQueryable<K> FindAll();
-        IQueryable<K> FindAll(Predicate<K> predicate);
-        ModelBaseReturn SaveFromScrapy<G>(G obj);
+        void Add<KItem>(KItem entity);
+        KItem SaveOrUpdate<KItem>(KItem entity);
+        ModelBaseReturn SaveFromScrapy<KScrapy>(KScrapy obj);
     }
 }

@@ -5,7 +5,7 @@ using TibiaApi.Database.Sql;
 
 namespace TibiaApi.Repository
 {
-    public class PlayerRepository : BaseRepository<Player>, IPlayerRepository<Player>
+    public class PlayerRepository : BaseRepository<Player>, IPlayerRepository
     {
         public PlayerRepository(TibiaDbContext context) : base(context)
         {

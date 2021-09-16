@@ -1,14 +1,25 @@
+using TibiaApi.Comum.ScrapyModels;
 using TibiaApi.Comum.WebReturns;
 using TibiaApi.Database.Sql;
 using TibiaApi.Repository;
 
 namespace TibiaApi.Service
 {
-    public class KillStatsService<IKillStatRepository> : BasicService<IKillStatsRepository<KillStat>, KillStat>, IKillStatsService<IKillStatRepository>
+    public class KillStatsService : BasicService, IKillStatsService
     {
-        public KillStatsService(IKillStatsRepository<KillStat> repository) : base(repository) { }
+        private IKillStatsRepository _repository;
 
-        public override ModelBaseReturn SaveFromScrapy<KillStatScrapy>(KillStatScrapy model)
+        public KillStatsService(IKillStatsRepository repository) {
+
+            _repository = repository;
+        }
+
+        public void Add(object entity)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public ModelBaseReturn SaveFromScrapy(KillStatScrapy model)
         {
             return null;
         }

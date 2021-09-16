@@ -12,34 +12,36 @@ using static TibiaApi.Comum.Constantes;
 namespace TibiaApi.Service
 {
     [Queue(FilasHangfire.PLAYER_SERVICE)]
-    public class PlayerService<IPlayerRepository> : BasicService<IPlayerRepository<Player>, Player>, IPlayerService<IPlayerRepository>
+    public class PlayerService : BasicService, IPlayerService
     {
+        private readonly IPlayerRepository _repository;
         private readonly IMapper _mapper;
-        private IWorldRepository<World> _worldRepository;
-        public PlayerService(IPlayerRepository<Player> repository
+        private IWorldRepository _worldRepository;
+        public PlayerService(IPlayerRepository repository
             , IMapper mapper
-            , IWorldRepository<World> worldRepository
-            ) : base(repository)
+            , IWorldRepository worldRepository
+            )
         {
+            _repository = repository;
             _mapper = mapper;
             _worldRepository = worldRepository;
         }
 
         [Queue(FilasHangfire.PLAYER_SERVICE)]
-        public ModelBaseReturn SaveFromScrapy<TScrapy>(IList<TScrapy> models)
+        public ModelBaseReturn SaveFromScrapy(IList<PlayerScrapy> models)
         {
             ModelBaseReturn retornoErro = null;
 
             if (models != null && models.Any())
             {
-                var playerNames = models.Where(v => v is PlayerScrapy).Select(p => (p as PlayerScrapy).Name).ToArray();
+                var playerNames = models.Where(v => v is PlayerScrapy).Select(p => p.Name).ToArray();
 
                 var playersInDb = _repository.FindAllByNames(playerNames);
 
                 foreach (var item in models)
                 {
-                    var playerDb = playersInDb.FirstOrDefault(p => p.Name == (item as PlayerScrapy).Name);
-                    this.SaveFromScrapy(item as PlayerScrapy, playerDb);
+                    var playerDb = playersInDb.FirstOrDefault(p => p.Name == item.Name);
+                    this.SaveFromScrapy(item, playerDb);
                 }
                 _repository.Save();
             }
@@ -48,7 +50,7 @@ namespace TibiaApi.Service
         }
 
         [Queue(FilasHangfire.PLAYER_SERVICE)]
-        public override ModelBaseReturn SaveFromScrapy<TScrapy>(TScrapy scrapyModel)
+        public ModelBaseReturn SaveFromScrapy(PlayerScrapy scrapyModel)
         {
             var playerInDb = _repository.FindByName((scrapyModel as PlayerScrapy).Name);
             var retorno =  SaveFromScrapy(scrapyModel as PlayerScrapy, playerInDb);

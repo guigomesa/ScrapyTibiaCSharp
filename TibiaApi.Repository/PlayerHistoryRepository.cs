@@ -2,7 +2,7 @@
 
 namespace TibiaApi.Repository
 {
-    public class PlayerHistoryRepository : BaseRepository<PlayerHistory>, IPlayerHistoryRepository<PlayerHistory>
+    public class PlayerHistoryRepository : BaseRepository<PlayerHistory>, IPlayerHistoryRepository
     {
         public PlayerHistoryRepository(TibiaDbContext context) : base(context)
         {

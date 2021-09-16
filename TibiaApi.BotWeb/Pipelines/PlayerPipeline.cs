@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using TibiaApi.Comum.Extensions;
 using TibiaApi.Comum.ScrapyModels;
-using TibiaApi.Repository;
 using TibiaApi.Service;
 
 namespace TibiaApi.BotWeb.Pipelines
@@ -21,7 +20,7 @@ namespace TibiaApi.BotWeb.Pipelines
             {
                 var itensJob = players.Select(v => (PlayerScrapy)v).ToList();
 
-                Hangfire.BackgroundJob.Enqueue<PlayerService<PlayerRepository>>(srv => srv.SaveFromScrapy(itensJob));
+                Hangfire.BackgroundJob.Enqueue<PlayerService>(srv => srv.SaveFromScrapy(itensJob));
             }
 
             return items.Count;

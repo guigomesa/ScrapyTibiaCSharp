@@ -2,7 +2,7 @@
 
 namespace TibiaApi.Repository
 {
-    public class KillStatsRepository : BaseRepository<KillStat>, IKillStatsRepository<KillStat>
+    public class KillStatsRepository : BaseRepository<KillStat>, IKillStatsRepository
     {
         public KillStatsRepository(TibiaDbContext context) : base(context)
         {

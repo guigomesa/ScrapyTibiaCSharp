@@ -3,9 +3,9 @@ using TibiaApi.Database.Sql;
 
 namespace TibiaApi.Repository
 {
-    public interface IPlayerRepository<T> : IBaseRepository<T> where T : BasicEntity
+    public interface IPlayerRepository : IBaseRepository<Player>
     {
-        T FindByName(string name);
-        IEnumerable<T> FindAllByNames(params string[] names);
+        Player FindByName(string name);
+        IEnumerable<Player> FindAllByNames(params string[] names);
     }
 }

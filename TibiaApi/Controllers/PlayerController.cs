@@ -13,9 +13,9 @@ namespace TibiaApi.Web.Controllers
     [Route("api/v1/[controller]")]
     public class PlayerController : BaseController
     {
-        private readonly IPlayerService<PlayerRepository> _playerService;
+        private readonly IPlayerService _playerService;
 
-        public PlayerController(IPlayerService<PlayerRepository> playerService)
+        public PlayerController(IPlayerService playerService)
         {
             _playerService = playerService;
         }

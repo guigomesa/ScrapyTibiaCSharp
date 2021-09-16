@@ -5,7 +5,7 @@ using TibiaApi.Database.Sql;
 
 namespace TibiaApi.Repository
 {
-    public class WorldRepository : BaseRepository<World>, IWorldRepository<World>
+    public class WorldRepository : BaseRepository<World>, IWorldRepository
     {
         public WorldRepository(TibiaDbContext context) : base(context)
         {

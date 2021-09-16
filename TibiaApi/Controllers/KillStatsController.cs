@@ -13,9 +13,9 @@ namespace TibiaApi.Web.Controllers
     [Route("api/v1/[controller]")]
     public class KillStatsController : BaseController
     {
-        private readonly IKillStatsService<KillStatsRepository> _killStatsService;
+        private readonly IKillStatsService _killStatsService;
 
-        public KillStatsController(IKillStatsService<KillStatsRepository> killStatsService)
+        public KillStatsController(IKillStatsService killStatsService)
         {
             _killStatsService = killStatsService;
         }

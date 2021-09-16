@@ -2,7 +2,7 @@
 
 namespace TibiaApi.Repository
 {
-    public interface IDeathPlayerRepository<T> : IBaseRepository<T> where T : BasicEntity
+    public interface IDeathPlayerRepository : IBaseRepository<DeathPlayer>
     {
     }
 }

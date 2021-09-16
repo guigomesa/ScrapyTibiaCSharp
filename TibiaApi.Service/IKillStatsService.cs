@@ -3,7 +3,7 @@ using TibiaApi.Repository;
 
 namespace TibiaApi.Service
 {
-    public interface IKillStatsService<KillStatRepository> : IBasicService<IKillStatsRepository<KillStat>, KillStat>
+    public interface IKillStatsService : IBasicService
     {       
     }
 }

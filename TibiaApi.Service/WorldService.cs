@@ -9,17 +9,19 @@ using static TibiaApi.Comum.Constantes;
 namespace TibiaApi.Service
 {
     [Queue(FilasHangfire.WORLD_SERVICE)]
-    public class WorldService<IWorldRepository> : BasicService<IWorldRepository<World>, World>, IWorldService<IWorldRepository>
+    public class WorldService : BasicService, IWorldService
 
     {
-        public WorldService(IWorldRepository<World> repository) : base(repository)
+        private IWorldRepository _repository;
+
+        public WorldService(IWorldRepository repository)
         {
+            _repository = repository;
         }
 
         [Queue(FilasHangfire.WORLD_SERVICE)]
-        public override ModelBaseReturn SaveFromScrapy<TScrapy>(TScrapy scrapyModel)
+        public ModelBaseReturn SaveFromScrapy(WorldScrapy scrapy)
         {
-            var scrapy = scrapyModel as WorldScrapy;
             var isCreated = true;
 
             try
@@ -55,9 +57,7 @@ namespace TibiaApi.Service
                     TotalPlayerOnline = scrapy.NumberPlayersOnline,
                 });
 
-
-                this.Save();
-
+                _repository.Save();
 
                 scrapy.Id = Convert.ToInt32(world.Id);
                 scrapy.ScrapyData = world.ScrapyData;

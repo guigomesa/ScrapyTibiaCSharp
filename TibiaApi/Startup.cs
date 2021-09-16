@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using StackExchange.Redis;
 using Swashbuckle.AspNetCore.Swagger;
 using System;
 using TibiaApi.Web.Config;
@@ -17,19 +18,23 @@ namespace TibiaApi.Web
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            var cnRedis = Configuration.GetValue<string>("Redis");
+            Redis = ConnectionMultiplexer.Connect(cnRedis);
         }
 
         public IConfiguration Configuration { get; }
+
+        public static ConnectionMultiplexer Redis;
 
         public void ConfigureServices(IServiceCollection services)
         {
             services.RegisterDatabase(Configuration);
             services.RegisterDependenciesScan(Configuration);
 
-            var connection = Configuration.GetConnectionString("TibiaPostgres");
+            //var connection = Configuration.GetConnectionString("TibiaPostgres");
 
-            services.StartServiceHangfire(connection);
-            
+            services.StartServiceHangfire(Redis);
+
             services.AddMvc(options => {
 
                 options.EnableEndpointRouting = false;
@@ -64,15 +69,11 @@ namespace TibiaApi.Web
 
             //GlobalConfiguration.Configuration.UseActivator(new HangfireActivator(serviceProvider));
 
-
             var apenasServer = Configuration.GetValue<bool>("apenasscrapy", true);
-
 
             app.StartHangfire(apenasServer, serviceProvider);
 
-            var cs = Configuration.GetConnectionString("TibiaPostgres");
-
-            app.StartDashboardHangfire(cs);
+            app.StartDashboardHangfire();
 
             app.UseSwagger();
             app.UseSwaggerUI(c =>

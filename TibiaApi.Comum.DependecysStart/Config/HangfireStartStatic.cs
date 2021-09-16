@@ -2,9 +2,9 @@
 using Hangfire.PostgreSql;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using StackExchange.Redis;
 using System;
 using TibiaApi.Comum;
-using TibiaApi.Web.HangfireJobs;
 
 namespace TibiaApi.Web.Config
 {
@@ -35,14 +35,14 @@ namespace TibiaApi.Web.Config
             app.UseHangfireServer(options);
         }
 
-        public static void StartDashboardHangfire(this IApplicationBuilder app, string connectionString)
+        public static void StartDashboardHangfire(this IApplicationBuilder app)
         {
             var optionsDashboard = new DashboardOptions()
             {
                 Authorization = new[] { new Auth.HangfireAutorizationFilter() },
             };
 
-            app.UseHangfireDashboard("/hangfire", optionsDashboard, GenerateJobStorage(connectionString));
+            app.UseHangfireDashboard("/hangfire", optionsDashboard);
         }
 
         private static BackgroundJobServerOptions CreateOptionsBackgroundServer(IServiceProvider serviceProvider, string[] filas, string nome, int workersCount)
@@ -57,12 +57,22 @@ namespace TibiaApi.Web.Config
             };
         }
 
-        public static void StartServiceHangfire(this IServiceCollection services, string connection)
+        public static void StartServiceHangfire(this IServiceCollection services, ConnectionMultiplexer redis)
         {
             services
                     .AddHangfire(x =>
-                    x.UseStorage(
-                        GenerateJobStorage(connection)));
+                    x.UseRedisStorage(redis)
+                    );
+        }
+
+        private static Action<BackgroundJobServerOptions> BackgroundServerHangfire(IServiceProvider serviceProvider, string[] filas, string nome, int workersCount)
+        {
+            return x =>
+            {
+                x.Queues = filas;
+                x.WorkerCount = workersCount;
+                x.ServerName = $"{nome}{Environment.MachineName}_{Guid.NewGuid().ToString().Replace("-", "").Substring(0, 6)}";
+            };
         }
 
         public static JobStorage GenerateJobStorage(string connectionString) => new PostgreSqlStorage(connectionString);

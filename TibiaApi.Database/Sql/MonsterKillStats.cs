@@ -15,7 +15,7 @@ namespace TibiaApi.Database.Sql
         [Column("id_world")]
         public long IdWorld { get; set; }
         public virtual World World { get; set; }
-        
-        public List<KillStat> KillStats { get; set; }
+
+        public List<KillStat> KillStats { get; set; } = new List<KillStat>();
     }
 }

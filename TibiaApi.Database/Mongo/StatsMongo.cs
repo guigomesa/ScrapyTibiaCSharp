@@ -9,21 +9,20 @@ namespace TibiaApi.Database.Mongo
 {
     public class StatsMongo : BasicEntityMongo
     {
-        [BsonRepresentationAttribute(MongoDB.Bson.BsonType.DateTime)]
+        [BsonRepresentation(MongoDB.Bson.BsonType.DateTime)]
         [DataMember]
         public virtual DateTime RegisterDate { get; set; }
 
-        [BsonRepresentationAttribute(MongoDB.Bson.BsonType.Int32)]
+        [BsonRepresentation(MongoDB.Bson.BsonType.Int32)]
         [DataMember]
         public int TotalPlayerOnline { get; set; }
 
-        [BsonRepresentationAttribute(MongoDB.Bson.BsonType.String)]
+        [BsonRepresentation(MongoDB.Bson.BsonType.String)]
         [DataMember]
         public StatusWorld Status { get; set; }
 
-        [BsonRepresentationAttribute(MongoDB.Bson.BsonType.ObjectId)]
+        [BsonRepresentation(MongoDB.Bson.BsonType.ObjectId)]
         [DataMember]
         public long WorldMongoId { get; set; }
-
     }
 }

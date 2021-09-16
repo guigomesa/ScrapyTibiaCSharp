@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace TibiaApi.Database
+namespace TibiaApi.Database.Sql
 {
     public class TibiaDbContext : DbContext
     {

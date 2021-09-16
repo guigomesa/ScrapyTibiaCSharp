@@ -1,8 +1,6 @@
-
-
 using System;
 using System.Linq;
-using TibiaApi.Database;
+using TibiaApi.Database.Sql;
 
 namespace TibiaApi.Repository
 {

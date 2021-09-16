@@ -5,7 +5,7 @@ using TibiaApi.Comum.Utils;
 using System.ComponentModel.DataAnnotations.Schema;
 using TibiaApi.Comum.ScrapyModels;
 
-namespace TibiaApi.Database
+namespace TibiaApi.Database.Sql
 {
     [Table("player")]
     public class Player : BasicEntity

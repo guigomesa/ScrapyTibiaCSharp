@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using TibiaApi.Comum.Utils;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace TibiaApi.Database
+namespace TibiaApi.Database.Sql
 {
     [Table("player_history")]
     public class PlayerHistory : BasicEntity

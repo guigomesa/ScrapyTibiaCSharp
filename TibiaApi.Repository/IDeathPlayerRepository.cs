@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using TibiaApi.Database;
+﻿using TibiaApi.Database.Sql;
 
 namespace TibiaApi.Repository
 {

@@ -1,7 +1,7 @@
 
 using AutoMapper;
 using TibiaApi.Comum.ScrapyModels;
-using TibiaApi.Database;
+using TibiaApi.Database.Sql;
 
 namespace TibiaApi.Web.Config
 {

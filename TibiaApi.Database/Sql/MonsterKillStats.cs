@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace TibiaApi.Database
+namespace TibiaApi.Database.Sql
 {
     [Table("monster_kill_stats")]
     public class MonsterKillStats : BasicEntity

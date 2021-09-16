@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NetCore.AutoRegisterDi;
 using System.Reflection;
-using TibiaApi.Database;
+using TibiaApi.Database.Sql;
 
 namespace TibiaApi.Web.Config
 {

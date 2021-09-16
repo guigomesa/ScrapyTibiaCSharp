@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace TibiaApi.Database
+namespace TibiaApi.Database.Sql
 {
     [Table("death_player")]
     public class DeathPlayer : BasicEntity

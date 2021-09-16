@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using System;
 
-namespace TibiaApi.Database
+namespace TibiaApi.Database.Sql
 {
     public class TibiaContextFactory : IDesignTimeDbContextFactory<TibiaDbContext>
     {

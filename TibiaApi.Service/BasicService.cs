@@ -1,10 +1,9 @@
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using TibiaApi.Comum.WebReturns;
-using TibiaApi.Database;
+using TibiaApi.Database.Sql;
 using TibiaApi.Repository;
 
 namespace TibiaApi.Service

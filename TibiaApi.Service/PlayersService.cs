@@ -1,5 +1,3 @@
-
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,10 +5,9 @@ using AutoMapper;
 using Hangfire;
 using TibiaApi.Comum.ScrapyModels;
 using TibiaApi.Comum.WebReturns;
-using TibiaApi.Database;
+using TibiaApi.Database.Sql;
 using TibiaApi.Repository;
 using static TibiaApi.Comum.Constantes;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace TibiaApi.Service
 {
@@ -21,7 +18,6 @@ namespace TibiaApi.Service
         private IWorldRepository<World> _worldRepository;
         public PlayerService(IPlayerRepository<Player> repository
             , IMapper mapper
-            , IServiceProvider serviceProvider
             , IWorldRepository<World> worldRepository
             ) : base(repository)
         {
@@ -47,10 +43,6 @@ namespace TibiaApi.Service
                 }
                 _repository.Save();
             }
-
-
-
-          
 
             return retornoErro ?? CreateReturnCreated();
         }
@@ -107,7 +99,6 @@ namespace TibiaApi.Service
                     var retorno = _mapper.Map<PlayerScrapy>(player);
                     return CreateReturnOk(retorno);
                 }
-
             }
             catch (Exception ex)
             {

@@ -25,7 +25,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ServicesSearch", "ServicesS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkerTibia", "WorkerTibia\WorkerTibia.csproj", "{2571CA37-9822-4524-8F38-8C8ADECD0369}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TibiaApi.Comum.DependecysStart", "TibiaApi.Comum.DependecysStart\TibiaApi.Comum.DependecysStart.csproj", "{722891D5-5C2B-49FF-9A81-7E0ACB23C7A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TibiaApi.Comum.DependecysStart", "TibiaApi.Comum.DependecysStart\TibiaApi.Comum.DependecysStart.csproj", "{722891D5-5C2B-49FF-9A81-7E0ACB23C7A4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

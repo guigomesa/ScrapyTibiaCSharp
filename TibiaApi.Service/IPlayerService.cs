@@ -4,6 +4,7 @@ using System.Text;
 using TibiaApi.Comum.ScrapyModels;
 using TibiaApi.Comum.WebReturns;
 using TibiaApi.Database;
+using TibiaApi.Database.Sql;
 using TibiaApi.Repository;
 
 namespace TibiaApi.Service

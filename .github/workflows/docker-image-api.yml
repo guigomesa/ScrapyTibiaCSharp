@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image API
-      run: docker build . --file Tibia-Api.Dockerfile --tag ghcr.io/guigomesa/TibiaScrapyApi:latest
+      run: docker build . --file Tibia-Api.Dockerfile --tag ghcr.io/guigomesa/tibiascrapyapi:latest
     - uses: actions/checkout@v2
     - name: Publish build
-      run: docker push ghcr.io/guigomesa/TibiaScrapyApi:latest
+      run: docker push ghcr.io/guigomesa/tibiascrapyapi:latest

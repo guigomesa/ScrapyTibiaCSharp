@@ -1,8 +1,8 @@
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-alpine AS base
+FROM mcr.microsoft.com/dotnet/runtime:6.0.1-alpine3.14-amd64 AS base
 WORKDIR /app
 EXPOSE 80
 
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
+FROM mcr.microsoft.com/dotnet/sdk:6.0.101-focal-amd64 AS build
 WORKDIR /src
 COPY ["TibiaApi/TibiaApi.Web.csproj", "TibiaApi/"]
 COPY ["Tibia.Comum/TibiaApi.Comum.csproj", "Tibia.Comum/"]

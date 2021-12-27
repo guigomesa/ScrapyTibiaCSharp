@@ -1,0 +1,21 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image API
+      run: docker build . --file Tibia-Api.Dockerfile --tag ghcr.io/guigomesa/TibiaScrapyApi:latest
+    - uses: actions/checkout@v2
+    - name: Publish build
+      run: docker push ghcr.io/guigomesa/TibiaScrapyApi:latest

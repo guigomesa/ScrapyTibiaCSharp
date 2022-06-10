@@ -7,7 +7,7 @@
   <ItemGroup>
     <PackageReference Include="DotnetSpider.Core" Version="3.0.8" />
     <PackageReference Include="DotnetSpider.Extension" Version="3.0.8" />
-    <PackageReference Include="Hangfire.Core" Version="1.7.25" />
+    <PackageReference Include="Hangfire.Core" Version="1.7.30" />
     <PackageReference Include="ScrapySharp" Version="3.0.0" />
   </ItemGroup>
 

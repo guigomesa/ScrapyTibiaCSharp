@@ -8,7 +8,7 @@
     <ProjectReference Include="..\TibiaApi.Database\TibiaApi.Database.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.1" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="5.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
